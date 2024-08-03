@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spinner App</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="list-container">
+            <label>List of names</label>
+            <textarea id="txtList"></textarea>
+        </div>
+        <div class="content-container">
+            <div class="spinner-container">
+                <img id="spinnerImage" src="./assets/img/spinner.gif" alt="Spinner Image">
+                <div class="name" id="divSelected">Start spinning</div>
+                <button class="spinner-button" onclick="start()">Random Pick</button>
+                <a href="settings.html">Settings</a>
+                <a href="#" onclick="toggleList()">Toggle List</a>
+            </div>
+            <div class="additional-container">
+                <div class="last-picked">
+                    <label>5 pemenang undian kaget : </label>
+                    <ul id="lastPickedList">
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include JavaScript file -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

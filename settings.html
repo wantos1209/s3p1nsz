@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include CSS file -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="settings-wrapper">
+        <h1>Settings</h1>
+        <div class="name-list">
+            <label>Manage Names</label>
+            <textarea id="settingsTxtList" rows="20" cols="80"></textarea>
+            <p>Format: Nama, iswin (0 atau 1)</p>
+        </div>
+        <button onclick="saveNames()">Save Names</button>
+        <button onclick="generateRandomNames()">Generate Random Names</button>
+        <a href="index.html">Back to Home</a>
+    </div>
+    <!-- Include JavaScript file -->
+    <script src="./assets/js/settings.js"></script>
+</body>
+</html>
