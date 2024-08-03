@@ -38,7 +38,8 @@ function start() {
     let winningNames = storedNames.filter(name => name.iswin === 1 && !selectedNames.has(name.nama));
 
     if (winningNames.length < 1) {
-        alert("Tidak ada nama dengan iswin = 1 yang tersisa.");
+        // alert("Tidak ada nama dengan iswin = 1 yang tersisa.");
+        alert("Error.");
         $(".spinner-button").prop("disabled", false);
         return;
     }
