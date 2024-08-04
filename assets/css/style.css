@@ -12,7 +12,7 @@ body {
 .wrapper {
   display: flex;
   min-height: 100vh;
-  padding: 1rem 2rem;
+  padding: 1rem 10rem 1rem 2rem;
   position: relative;
 }
 
@@ -29,7 +29,6 @@ body {
   opacity: 0.8; /* Adjust opacity if needed */
   z-index: -1;
 }
-
 
 .list-container {
   flex: 0 0 20%;
@@ -78,7 +77,7 @@ textarea {
 }
 
 #spinnerImage {
-  width: 65%;
+  width: 80%;
   height: auto;
   margin-bottom: 1em;
   border-radius: 0.5em; /* Rounded corners for a soft look */
@@ -90,7 +89,6 @@ textarea {
   /* background: linear-gradient(135deg, #ff6f61, #de6262);  */
   border-radius: 0.5em;
   width: 100%; /* Full width for the container */
-  max-width: 400px; /* Adjust the width as needed */
   box-shadow: 0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -102,6 +100,7 @@ textarea {
 }
 
 .last-picked label {
+  width: 100%;
   font-size: 1.5rem;
   color: #ffffff; /* White text color for label */
   margin-bottom: 0.5em;
@@ -117,21 +116,41 @@ textarea {
 }
 
 #lastPickedList li {
-  background-color: #fff; /* White background for list items */
-  color: #e7484f; /* Text color matching the theme */
-  padding: 0.7em;
-  margin: 0.2em 0;
-  border-radius: 0.3em;
+  font-size: 2rem;
+  border: 1px solid #aaa;
+  padding: 0.5em;
+  /* width: 60%; */
   text-align: center;
-  font-size: 1.2rem;
-  box-shadow: 0em 0.1em 0.2em 0em rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease-in-out;
+  background-color: white;
+  color: red;
+  box-shadow: inset 0em 0.5em 0.75em 0em rgba(0, 0, 0, 0.45),
+              inset 0em -0.5em 0.75em 0em rgba(0, 0, 0, 0.45),
+              inset 1em 0em 0.7em 0.5em rgba(255, 255, 255, 1),
+              0em 0em 0.75em 0em rgba(0, 0, 0, 0.25);
+  border-radius: 0.15em;
+  position: relative;
+  margin-bottom: 10px;
 }
 
-#lastPickedList li:hover {
-  background-color: #f68b1d; /* Hover background color */
-  color: #fff; /* Hover text color */
+#lastPickedList li:before,
+#lastPickedList li:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  border-radius: 100px / 10px;
 }
+
+#lastPickedList li:after {
+  right: 10px;
+  left: auto;
+  transform: skew(8deg) rotate(3deg);
+}
+
 
 .name {
   font-size: 2rem;
@@ -190,37 +209,64 @@ button {
   border: none;
   width: 250px;
   text-align: center;
-  box-shadow: 0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.5);
+  color: #fff;
+  background-color: #5e8ef7;
+  box-shadow: 0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.1s;
 }
 
 button:hover {
-  background-image: linear-gradient(
-    to right,
-    #e7484f,
-    #e7484f 16.65%,
-    #f68b1d 16.65%,
-    #f68b1d 33.3%,
-    #fced00 33.3%,
-    #fced00 49.95%,
-    #009e4f 49.95%,
-    #009e4f 66.6%,
-    #00aac3 66.6%,
-    #00aac3 83.25%,
-    #732982 83.25%,
-    #732982 100%,
-    #e7484f 100%
-  );
-  animation: slidebg 6s linear infinite;
-  color: white;
+  background-color: #417ee3;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+button.spinner-button {
+  background-color: #5e8ef7;
+}
+
+button.spinner-button:hover {
+  background-color: #417ee3;
+}
+
+button.spinner-button:active {
+  transform: translateY(2px);
+}
+
+button.settings-button {
+  background-color: #f78c5e;
+}
+
+button.settings-button:hover {
+  background-color: #e37247;
+}
+
+button.settings-button:active {
+  transform: translateY(2px);
 }
 
 a {
-  color: #1dace7;
+  margin-top: 0.5em;
+  padding: 0.5em 2em;
+  font-size: 1.5em;
+  border-radius: 0.25em;
   text-decoration: none;
+  width: 250px;
+  text-align: center;
+  color: #fff;
+  background-color: #5e8ef7;
+  box-shadow: 0em 0.25em 0.5em 0em rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.1s;
 }
 
-@keyframes slidebg {
-  to {
-    background-position: calc(20vw * 2);
-  }
+a:hover {
+  background-color: #417ee3;
+}
+
+a:active {
+  transform: translateY(2px);
 }

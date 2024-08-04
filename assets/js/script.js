@@ -38,44 +38,37 @@ function start() {
     let winningNames = storedNames.filter(name => name.iswin === 1 && !selectedNames.has(name.nama));
 
     if (winningNames.length < 1) {
-        // alert("Tidak ada nama dengan iswin = 1 yang tersisa.");
         alert("Error.");
         $(".spinner-button").prop("disabled", false);
         return;
     }
 
-    let decidedName = winningNames[randomRange(0, winningNames.length - 1)].nama;
+    let decidedNames = winningNames.slice(0, maxSpins).map(name => name.nama); // Ensure we have up to maxSpins names
     let shuffledNames = shuffleArray(storedNames);
 
     if (shuffledNames.length < 1) return;
 
     let i = 0;
-    let j = 0;
-
     let randomizer = setInterval(() => {
-        if (i == shuffledNames.length) {
-            i = 0;
-        }
-        if (j == colors.length) {
-            j = 0;
-        }
-
-        $("#divSelected")
-            .text(shuffledNames[i++].nama)
-            .css("color", `#${colors[j++]}`);
+        $("#lastPickedList li").each(function(index) {
+            let randomColor = Math.floor(Math.random()*16777215).toString(16); // Generate random color
+            $(this).text(shuffledNames[i].nama)
+                .css("color", `#${randomColor}`);
+            i = (i + 1) % shuffledNames.length;
+        });
     }, 50);
 
     setTimeout(() => {
         clearInterval(randomizer);
-        $("#divSelected").text(decidedName);
+        $("#lastPickedList li").each(function(index) {
+            $(this).text(decidedNames[index] || "...");
+        });
 
-        if (spinNames[currentIndex] === "...") {
-            spinNames[currentIndex] = decidedName;
-            selectedNames.add(decidedName);
-        }
+        decidedNames.forEach(name => selectedNames.add(name));
+
+        spinNames = decidedNames;
         updateLastPickedList();
 
-        currentIndex = (currentIndex + 1) % maxSpins;
         spinCount++;
         $(".spinner-button").prop("disabled", spinCount >= maxSpins);
     }, 3000);
